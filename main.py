@@ -3,8 +3,9 @@ import os
 import requests
 import json
 
-API_ADDR = os.environ["API_ADDR"] #"http://127.0.0.1:3000/api/v1/panel_cards"
-IP = os.environ["BINDING"]
+# API_ADDR = os.environ["API_ADDR"] #"http://127.0.0.1:3000/api/v1/panel_cards"
+API_ADDR = "http://95.0.169.125:3000/api/v1/panel_cards"
+# IP = os.environ["BINDING"]
 
 
 BUSY = False
@@ -44,7 +45,7 @@ def send_to_api(access_info):
 def listen():
     global BUSY
     udp = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
-    udp.bind((IP, 11011))
+    udp.bind(("", 11011))
     print("listenning on {}".format(11011))
     while True:
         if not BUSY:
