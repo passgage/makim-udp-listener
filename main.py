@@ -53,8 +53,9 @@ def listen():
             if msg.startswith(b'%CD'):
                 print(f'incoming buffer: {msg}')
                 parsed = parse(msg, adr[0])
-                print(parsed)
-                send_to_api(parsed)
+                if parsed['card_no'] != 0:
+                    print(parsed)
+                    send_to_api(parsed)
 
 
 if __name__ == '__main__':
